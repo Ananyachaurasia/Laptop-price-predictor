@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Price Predictor - Configure</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="predict-page">
+    <div class="background-overlay"></div>
+
+    <div class="container-small">
+        <!-- Header -->
+        <div class="page-header">
+            <a href="{{ url_for('index') }}" class="btn-back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Home
+            </a>
+            <h1 class="page-title">Configure Your Laptop</h1>
+            <p class="page-subtitle">Fill in the specifications to get an instant price prediction</p>
+        </div>
+
+        <!-- Form Card -->
+        <div class="form-card">
+            <h2 class="form-title">Laptop Specifications</h2>
+
+            <form id="predictForm" method="POST">
+                <div class="form-grid">
+                    <!-- Brand -->
+                    <div class="form-group">
+                        <label for="company">Brand</label>
+                        <select id="company" name="company" required>
+                            <option value="">Select brand</option>
+                            {% for company in companies %}
+                            <option value="{{ company }}">{{ company }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Type -->
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <select id="type" name="type" required>
+                            <option value="">Select type</option>
+                            {% for type in types %}
+                            <option value="{{ type }}">{{ type }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- RAM -->
+                    <div class="form-group">
+                        <label for="ram">RAM (in GB)</label>
+                        <select id="ram" name="ram" required>
+                            <option value="">Select RAM</option>
+                            <option value="2">2 GB</option>
+                            <option value="4">4 GB</option>
+                            <option value="6">6 GB</option>
+                            <option value="8">8 GB</option>
+                            <option value="12">12 GB</option>
+                            <option value="16">16 GB</option>
+                            <option value="24">24 GB</option>
+                            <option value="32">32 GB</option>
+                            <option value="64">64 GB</option>
+                        </select>
+                    </div>
+
+                    <!-- Weight -->
+                    <div class="form-group">
+                        <label for="weight">Weight (in kg)</label>
+                        <input type="number" id="weight" name="weight" placeholder="Enter weight" step="0.1" min="0.5" max="5" required>
+                    </div>
+
+                    <!-- Touchscreen -->
+                    <div class="form-group">
+                        <label for="touchscreen">Touchscreen</label>
+                        <select id="touchscreen" name="touchscreen" required>
+                            <option value="">Select option</option>
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+
+                    <!-- IPS -->
+                    <div class="form-group">
+                        <label for="ips">IPS Display</label>
+                        <select id="ips" name="ips" required>
+                            <option value="">Select option</option>
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+
+                    <!-- CPU -->
+                    <div class="form-group">
+                        <label for="cpu">CPU</label>
+                        <select id="cpu" name="cpu" required>
+                            <option value="">Select CPU</option>
+                            {% for cpu in cpus %}
+                            <option value="{{ cpu }}">{{ cpu }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Resolution -->
+                    <div class="form-group">
+                        <label for="resolution">Screen Resolution</label>
+                        <select id="resolution" name="resolution" required>
+                            <option value="">Select resolution</option>
+                            {% for resolution in resolutions %}
+                            <option value="{{ resolution }}">{{ resolution }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- HDD -->
+                    <div class="form-group">
+                        <label for="hdd">HDD (in GB)</label>
+                        <select id="hdd" name="hdd" required>
+                            <option value="">Select HDD</option>
+                            <option value="0">0 GB</option>
+                            <option value="128">128 GB</option>
+                            <option value="256">256 GB</option>
+                            <option value="512">512 GB</option>
+                            <option value="1024">1024 GB</option>
+                            <option value="2048">2048 GB</option>
+                        </select>
+                    </div>
+
+                    <!-- SSD -->
+                    <div class="form-group">
+                        <label for="ssd">SSD (in GB)</label>
+                        <select id="ssd" name="ssd" required>
+                            <option value="">Select SSD</option>
+                            <option value="0">0 GB</option>
+                            <option value="8">8 GB</option>
+                            <option value="128">128 GB</option>
+                            <option value="256">256 GB</option>
+                            <option value="512">512 GB</option>
+                            <option value="1024">1024 GB</option>
+                        </select>
+                    </div>
+
+                    <!-- GPU -->
+                    <div class="form-group">
+                        <label for="gpu">GPU</label>
+                        <select id="gpu" name="gpu" required>
+                            <option value="">Select GPU</option>
+                            {% for gpu in gpus %}
+                            <option value="{{ gpu }}">{{ gpu }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- OS -->
+                    <div class="form-group">
+                        <label for="os">Operating System</label>
+                        <select id="os" name="os" required>
+                            <option value="">Select OS</option>
+                            {% for os in operating_systems %}
+                            <option value="{{ os }}">{{ os }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Screen Size Slider -->
+                <div class="form-group-full">
+                    <label for="screen_size">Screen Size: <span id="screenSizeValue">13.0</span> inches</label>
+                    <input type="range" id="screen_size" name="screen_size" min="10" max="18" step="0.1" value="13" class="slider">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-predict" id="predictBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    Predict Price
+                </button>
+            </form>
+
+            <!-- Result Display -->
+            <div id="resultCard" class="result-card" style="display: none;">
+                <p class="result-label">Predicted Price</p>
+                <p class="result-price" id="predictedPrice">₹0</p>
+                <p class="result-note">*Estimated price based on provided specifications</p>
+            </div>
+        </div>
+
+        <!-- Info Card -->
+        <div class="info-card">
+            <p>💡 <strong>Note:</strong> This uses a machine learning model to predict laptop prices based on specifications.</p>
+        </div>
+    </div>
+
+    <script>
+        //Screen size slider
+        const screenSizeSlider = document.getElementById('screen_size');
+        const screenSizeValue = document.getElementById('screenSizeValue');
+
+        screenSizeSlider.addEventListener('input', function() {
+            screenSizeValue.textContent = this.value;
+        });
+
+        // Form submission
+        const form = document.getElementById('predictForm');
+        const resultCard = document.getElementById('resultCard');
+        const predictedPrice = document.getElementById('predictedPrice');
+        const predictBtn = document.getElementById('predictBtn');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Disable button and show loading state
+            predictBtn.disabled = true;
+            predictBtn.innerHTML = 'Predicting...';
+
+            // Get form data
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('{{ url_for("predict_price") }}', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+               if (data.success) {
+                    predictedPrice.textContent = data.prediction;
+                    resultCard.style.display = 'block';
+                    resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+               }else {
+                    alert('Error: ' + data.error);
+               }
+            } catch (error) {
+                alert('An error occurred. Please try again.');
+                console.error(error);
+            } finally {
+                // Re-enable button
+                predictBtn.disabled = false;
+                predictBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> Predict Price';
+            }
+        });
+    </script>
+</body>
+</html>
